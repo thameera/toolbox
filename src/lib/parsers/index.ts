@@ -1,9 +1,10 @@
+import { parseText } from "./text-parser";
 import { TParsed } from "./types";
 import { parseURL } from "./url-parser";
 
 type TParserFn = (input: string) => TParsed;
 
-const parsers: TParserFn[] = [parseURL];
+const parsers: TParserFn[] = [parseURL, parseText];
 
 export const parse = (input: string): TParsed => {
   for (const parser of parsers) {
@@ -13,6 +14,6 @@ export const parse = (input: string): TParsed => {
     }
   }
 
-  // This should not happen
+  // This should not happen, because parseText will always return a value
   return null;
 };

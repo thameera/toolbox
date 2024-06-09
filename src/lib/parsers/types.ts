@@ -10,4 +10,10 @@ export interface IParsedURL {
   hash: Record<string, string>;
 }
 
-export type TParsed = IParsedURL | null;
+export interface IParsedText {
+  type: "text";
+  words: number;
+  characters: number;
+}
+
+export type TParsed = IParsedURL | IParsedText | null;
