@@ -1,8 +1,11 @@
+import { parse } from "@/lib/parsers";
 import { ParserTextarea } from "./parser-textarea";
+import { TParsed } from "@/lib/parsers/types";
 
 export function ParserColumn(): JSX.Element {
   const handleTextChange = (text: string) => {
-    console.log(text);
+    const parsed: TParsed = parse(text);
+    console.log(parsed);
   };
 
   return (
