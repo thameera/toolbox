@@ -21,7 +21,7 @@ export function ParserColumn(): JSX.Element {
     <div>
       <ParserTextarea onChange={handleTextChange} />
 
-      <div>
+      <div className="mt-4">
         {type === "url" && <ParserURLResult url={parsedData as IParsedURL} />}
       </div>
     </div>

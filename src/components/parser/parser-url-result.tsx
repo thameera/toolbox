@@ -20,7 +20,7 @@ export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
 
   return (
     <>
-      <h2>Parsed URL</h2>
+      <div className="font-bold text-xl">URL</div>
       <Table>
         <TableBody>
           {url.protocol && renderRow("Protocol", url.protocol)}
