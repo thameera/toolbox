@@ -7,9 +7,8 @@ interface ParserURLResultProps {
 
 export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
   const renderRow = (label: string, value: string): JSX.Element => {
-    if (!value) return <></>;
     return (
-      <TableRow>
+      <TableRow key={label}>
         <TableCell className="w-[150px] sm:w-[300px]">{label}</TableCell>
         <TableCell>{value}</TableCell>
       </TableRow>
@@ -21,14 +20,40 @@ export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
       <h2>Parsed URL</h2>
       <Table>
         <TableBody>
-          {renderRow("Protocol", url.protocol)}
-          {renderRow("Host", url.host)}
-          {renderRow("Port", url.port)}
-          {renderRow("Path", url.path)}
-          {renderRow("Username", url.username)}
-          {renderRow("Password", url.password)}
+          {url.protocol && renderRow("Protocol", url.protocol)}
+          {url.host && renderRow("Host", url.host)}
+          {url.port && renderRow("Port", url.port)}
+          {url.path && renderRow("Path", url.path)}
+          {url.username && renderRow("Username", url.username)}
+          {url.password && renderRow("Password", url.password)}
         </TableBody>
       </Table>
+
+      {Object.keys(url.query).length > 0 && (
+        <>
+          <div className="font-bold mt-2">Query params</div>
+          <Table>
+            <TableBody>
+              {Object.entries(url.query).map(([key, value]) =>
+                renderRow(key, value),
+              )}
+            </TableBody>
+          </Table>
+        </>
+      )}
+
+      {Object.keys(url.hash).length > 0 && (
+        <>
+          <div className="font-bold mt-2">Hash params</div>
+          <Table>
+            <TableBody>
+              {Object.entries(url.hash).map(([key, value]) =>
+                renderRow(key, value),
+              )}
+            </TableBody>
+          </Table>
+        </>
+      )}
     </>
   );
 }
