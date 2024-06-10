@@ -1,3 +1,5 @@
+export type TParseTypes = "url" | "text";
+
 export interface IParsedURL {
   type: "url";
   protocol: string;
