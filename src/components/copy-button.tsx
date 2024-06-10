@@ -4,12 +4,14 @@ import {
   ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface CopyButtonProps {
   text: string;
+  className?: string;
 }
 
-export function CopyButton({ text }: CopyButtonProps): JSX.Element {
+export function CopyButton({ text, className }: CopyButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -19,7 +21,11 @@ export function CopyButton({ text }: CopyButtonProps): JSX.Element {
   };
 
   return (
-    <Button variant="outline" className="p-2" onClick={handleCopy}>
+    <Button
+      variant="outline"
+      className={cn("p-2", className)}
+      onClick={handleCopy}
+    >
       {copied ? (
         <ClipboardDocumentCheckIcon className="w-4 h-4" />
       ) : (

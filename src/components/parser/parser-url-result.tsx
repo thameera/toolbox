@@ -12,7 +12,7 @@ export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
       <TableRow key={label}>
         <TableCell className="w-[150px] sm:w-[300px]">{label}</TableCell>
         <TableCell>
-          <CopyButton text={value} /> {value}
+          <CopyButton className="mr-2" text={value} /> {value}
         </TableCell>
       </TableRow>
     );
