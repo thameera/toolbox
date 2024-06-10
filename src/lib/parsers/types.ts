@@ -16,4 +16,4 @@ export interface IParsedText {
   characters: number;
 }
 
-export type TParsed = IParsedURL | IParsedText | null;
+export type TParsed = IParsedURL | IParsedText;
