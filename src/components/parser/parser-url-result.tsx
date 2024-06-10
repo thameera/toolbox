@@ -1,5 +1,6 @@
 import { IParsedURL } from "@/lib/parsers/types";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
+import { CopyButton } from "@/components/copy-button";
 
 interface ParserURLResultProps {
   url: IParsedURL;
@@ -10,7 +11,9 @@ export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
     return (
       <TableRow key={label}>
         <TableCell className="w-[150px] sm:w-[300px]">{label}</TableCell>
-        <TableCell>{value}</TableCell>
+        <TableCell>
+          <CopyButton text={value} /> {value}
+        </TableCell>
       </TableRow>
     );
   };
