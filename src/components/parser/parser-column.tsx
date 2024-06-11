@@ -1,8 +1,14 @@
 import { parse } from "@/lib/parsers";
 import { ParserTextarea } from "./parser-textarea";
-import { IParsedURL, TParseTypes, TParsed } from "@/lib/parsers/types";
+import {
+  IParsedText,
+  IParsedURL,
+  TParseTypes,
+  TParsed,
+} from "@/lib/parsers/types";
 import { useState } from "react";
 import { ParserURLResult } from "./parser-url-result";
+import { ParserTextResult } from "./parser-text-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -23,6 +29,9 @@ export function ParserColumn(): JSX.Element {
 
       <div className="mt-4">
         {type === "url" && <ParserURLResult url={parsedData as IParsedURL} />}
+        {type === "text" && (
+          <ParserTextResult result={parsedData as IParsedText} />
+        )}
       </div>
     </div>
   );
