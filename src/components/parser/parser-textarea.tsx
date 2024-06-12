@@ -11,12 +11,17 @@ export function ParserTextarea({
     onChangeCallback(event.target.value);
   };
 
+  const onFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+    event.target.select();
+  };
+
   return (
     <div>
       <Textarea
         placeholder="Paste something here"
         rows={5}
         onChange={handleChange}
+        onFocus={onFocus}
       />
     </div>
   );
