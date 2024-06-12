@@ -24,7 +24,7 @@ export function ParserColumn(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <ParserTextarea onChange={handleTextChange} />
 
       <div className="mt-4">
