@@ -1,6 +1,7 @@
 import { parse } from "@/lib/parsers";
 import { ParserTextarea } from "./parser-textarea";
 import {
+  IParsedJWT,
   IParsedText,
   IParsedURL,
   TParseTypes,
@@ -9,6 +10,7 @@ import {
 import { useState } from "react";
 import { ParserURLResult } from "./parser-url-result";
 import { ParserTextResult } from "./parser-text-result";
+import { ParserJWTResult } from "./parser-jwt-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -32,7 +34,7 @@ export function ParserColumn(): JSX.Element {
         {type === "text" && (
           <ParserTextResult result={parsedData as IParsedText} />
         )}
-        {type === "jwt" && <div>{JSON.stringify(parsedData, null, 2)}</div>}
+        {type === "jwt" && <ParserJWTResult jwt={parsedData as IParsedJWT} />}
       </div>
     </div>
   );
