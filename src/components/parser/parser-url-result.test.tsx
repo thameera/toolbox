@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 
 const mockURL: IParsedURL = {
   type: "url",
-  protocol: "https",
+  protocol: "https:",
   host: "example.com",
   port: "443",
   path: "/path/to/resource",
@@ -20,7 +20,7 @@ describe("ParserURLResult", () => {
     render(<ParserURLResult url={mockURL} />);
 
     expect(screen.getByText("Protocol")).toBeInTheDocument();
-    expect(screen.getByText("https")).toBeInTheDocument();
+    expect(screen.getByText("https:")).toBeInTheDocument();
     expect(screen.getByText("Host")).toBeInTheDocument();
     expect(screen.getByText("example.com")).toBeInTheDocument();
     expect(screen.getByText("Port")).toBeInTheDocument();
