@@ -1,6 +1,7 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
 import { EditorView } from "@codemirror/view";
+import { CopyButton } from "@/components/copy-button";
 
 type CodeViewProps = {
   code: string;
@@ -32,7 +33,10 @@ export default function CodeView({
     }),
   ];
   return (
-    <div className="border border-gray-300">
+    <div className="relative border border-gray-300">
+      <div className="absolute top-1 right-1 z-10">
+        <CopyButton text={code} />
+      </div>
       <CodeMirror value={code} height="auto" extensions={extensions} readOnly />
     </div>
   );
