@@ -32,6 +32,7 @@ export function ParserColumn(): JSX.Element {
         {type === "text" && (
           <ParserTextResult result={parsedData as IParsedText} />
         )}
+        {type === "jwt" && <div>{JSON.stringify(parsedData, null, 2)}</div>}
       </div>
     </div>
   );

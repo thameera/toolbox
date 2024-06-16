@@ -1,4 +1,4 @@
-export type TParseTypes = "url" | "text";
+export type TParseTypes = "url" | "jwt" | "text";
 
 export interface IParsedURL {
   type: "url";
@@ -12,6 +12,12 @@ export interface IParsedURL {
   hash: Record<string, string>;
 }
 
+export interface IParsedJWT {
+  type: "jwt";
+  header: { [key: string]: any };
+  payload: { [key: string]: any };
+}
+
 export interface IParsedText {
   type: "text";
   words: number;
@@ -22,4 +28,4 @@ export interface IParsedNone {
   type: "";
 }
 
-export type TParsed = IParsedURL | IParsedText | IParsedNone;
+export type TParsed = IParsedURL | IParsedText | IParsedJWT | IParsedNone;
