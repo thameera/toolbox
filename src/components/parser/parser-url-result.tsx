@@ -1,5 +1,5 @@
 import { IParsedURL } from "@/lib/parsers/types";
-import { Table, TableBody, TableCell, TableRow } from "../ui/table";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { CopyButton } from "@/components/copy-button";
 
 interface ParserURLResultProps {
