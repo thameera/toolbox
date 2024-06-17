@@ -41,14 +41,14 @@ export function ParserContainer(): JSX.Element {
       </div>
 
       <div className="flex flex-row">
-        <div className={twoColumns ? "w-1/2" : "w-screen"}>
+        <div className={twoColumns ? "w-1/2" : "w-full"}>
           <ParserColumn />
         </div>
-        {twoColumns && (
-          <div className="w-1/2">
-            <ParserColumn />
-          </div>
-        )}
+        <div
+          className={`transition-width duration-300 ${twoColumns ? "w-1/2" : "w-0 hidden"}`}
+        >
+          <ParserColumn />
+        </div>
       </div>
     </div>
   );
