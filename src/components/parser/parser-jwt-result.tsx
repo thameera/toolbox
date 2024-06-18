@@ -28,9 +28,14 @@ const renderRow = (label: string, value: any): JSX.Element => {
   }
   return (
     <TableRow key={label}>
-      <TableCell className="w-[150px] sm:w-[300px]">{label}</TableCell>
+      <TableCell className="w-[150px] sm:w-[300px] truncate max-w-[150px] sm:max-w-[300px]">
+        <span className="truncate">{label}</span>
+      </TableCell>
       <TableCell>
-        <CopyButton className="mr-2" text={displayValue} /> {displayValue}
+        <div className="flex items-center">
+          <CopyButton className="mr-2 flex-shrink-0" text={displayValue} />
+          <span className="truncate">{displayValue}</span>
+        </div>
       </TableCell>
     </TableRow>
   );
