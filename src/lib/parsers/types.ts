@@ -29,6 +29,7 @@ export interface IParsedText {
 export interface IParsedJSON {
   type: "json";
   json: JsonObject | any[];
+  arrLength?: number;
 }
 
 export interface IParsedNone {
