@@ -1,11 +1,12 @@
+import { TParsed } from "./types";
 import { parseJWT } from "./jwt-parser";
 import { parseText } from "./text-parser";
-import { TParsed } from "./types";
 import { parseURL } from "./url-parser";
+import { parseJSON } from "./json-paser";
 
 type TParserFn = (input: string) => TParsed | null;
 
-const parsers: TParserFn[] = [parseURL, parseJWT];
+const parsers: TParserFn[] = [parseURL, parseJWT, parseJSON];
 
 export const parse = (input: string): TParsed => {
   const trimmed = input.trim();

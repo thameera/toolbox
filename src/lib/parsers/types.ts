@@ -1,4 +1,6 @@
-export type TParseTypes = "url" | "jwt" | "text";
+export type TParseTypes = "url" | "jwt" | "json" | "text";
+
+type JsonObject = { [key: string]: any };
 
 export interface IParsedURL {
   type: "url";
@@ -14,8 +16,8 @@ export interface IParsedURL {
 
 export interface IParsedJWT {
   type: "jwt";
-  header: { [key: string]: any };
-  payload: { [key: string]: any };
+  header: JsonObject;
+  payload: JsonObject;
 }
 
 export interface IParsedText {
@@ -24,8 +26,18 @@ export interface IParsedText {
   characters: number;
 }
 
+export interface IParsedJSON {
+  type: "json";
+  json: JsonObject | any[];
+}
+
 export interface IParsedNone {
   type: "";
 }
 
-export type TParsed = IParsedURL | IParsedText | IParsedJWT | IParsedNone;
+export type TParsed =
+  | IParsedURL
+  | IParsedText
+  | IParsedJWT
+  | IParsedJSON
+  | IParsedNone;

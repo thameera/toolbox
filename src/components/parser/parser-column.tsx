@@ -1,6 +1,7 @@
 import { parse } from "@/lib/parsers";
 import { ParserTextarea } from "./parser-textarea";
 import {
+  IParsedJSON,
   IParsedJWT,
   IParsedText,
   IParsedURL,
@@ -35,6 +36,11 @@ export function ParserColumn(): JSX.Element {
           <ParserTextResult result={parsedData as IParsedText} />
         )}
         {type === "jwt" && <ParserJWTResult jwt={parsedData as IParsedJWT} />}
+        {type === "json" && (
+          <div>
+            JSON: <>{JSON.stringify(parsedData as IParsedJSON)}</>
+          </div>
+        )}
       </div>
     </div>
   );
