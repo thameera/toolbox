@@ -12,6 +12,7 @@ import { useState } from "react";
 import { ParserURLResult } from "./parser-url-result";
 import { ParserTextResult } from "./parser-text-result";
 import { ParserJWTResult } from "./parser-jwt-result";
+import { ParserJSONResult } from "./parser-json-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -37,9 +38,7 @@ export function ParserColumn(): JSX.Element {
         )}
         {type === "jwt" && <ParserJWTResult jwt={parsedData as IParsedJWT} />}
         {type === "json" && (
-          <div>
-            JSON: <>{JSON.stringify(parsedData as IParsedJSON)}</>
-          </div>
+          <ParserJSONResult json={parsedData as IParsedJSON} />
         )}
       </div>
     </div>
