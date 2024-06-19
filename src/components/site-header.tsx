@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icons } from "./icons";
+import { WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 
 export function SiteHeader() {
   return (
@@ -7,7 +7,7 @@ export function SiteHeader() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Icons.logo className="w-6 h-6" />
+            <WrenchScrewdriverIcon className="w-6 h-6" />
             <span className="hidden font-bold sm:inline-block">Toolbox</span>
           </Link>
         </div>
