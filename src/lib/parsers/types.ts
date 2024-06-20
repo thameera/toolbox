@@ -1,4 +1,4 @@
-export type TParseTypes = "url" | "jwt" | "json" | "text";
+export type TParseTypes = "url" | "jwt" | "json" | "xml" | "text";
 
 type JsonObject = { [key: string]: any };
 
@@ -32,6 +32,11 @@ export interface IParsedJSON {
   arrLength?: number;
 }
 
+export interface IParsedXML {
+  type: "xml";
+  prettyXml: string;
+}
+
 export interface IParsedNone {
   type: "";
 }
@@ -41,4 +46,5 @@ export type TParsed =
   | IParsedText
   | IParsedJWT
   | IParsedJSON
+  | IParsedXML
   | IParsedNone;

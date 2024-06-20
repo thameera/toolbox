@@ -3,10 +3,11 @@ import { parseJWT } from "./jwt-parser";
 import { parseText } from "./text-parser";
 import { parseURL } from "./url-parser";
 import { parseJSON } from "./json-paser";
+import { parseXML } from "./xml-parser";
 
 type TParserFn = (input: string) => TParsed | null;
 
-const parsers: TParserFn[] = [parseURL, parseJWT, parseJSON];
+const parsers: TParserFn[] = [parseURL, parseJWT, parseJSON, parseXML];
 
 export const parse = (input: string): TParsed => {
   const trimmed = input.trim();

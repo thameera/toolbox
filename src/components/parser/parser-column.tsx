@@ -5,6 +5,7 @@ import {
   IParsedJWT,
   IParsedText,
   IParsedURL,
+  IParsedXML,
   TParseTypes,
   TParsed,
 } from "@/lib/parsers/types";
@@ -27,6 +28,10 @@ export function ParserColumn(): JSX.Element {
     setParsedData(parsed);
   };
 
+  if (type === "xml") {
+    console.log(parsedData);
+  }
+
   return (
     <div className="p-4">
       <ParserTextarea onChange={handleTextChange} />
@@ -40,6 +45,7 @@ export function ParserColumn(): JSX.Element {
         {type === "json" && (
           <ParserJSONResult json={parsedData as IParsedJSON} />
         )}
+        {type === "xml" && <pre>{(parsedData as IParsedXML).prettyXml}</pre>}
       </div>
     </div>
   );
