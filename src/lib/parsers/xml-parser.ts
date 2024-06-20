@@ -1,35 +1,26 @@
-import { XMLParser } from "fast-xml-parser";
-import xmlFormatter from "xml-formatter";
+import { XMLParser, XMLBuilder } from "fast-xml-parser";
 import { IParsedXML } from "./types";
 
-const isValidXML = (str: string): boolean => {
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    attributeNamePrefix: "@_",
-    parseAttributeValue: true,
-    allowBooleanAttributes: true,
-  });
-
+export function parseXML(xmlStr: string): IParsedXML | null {
   try {
-    parser.parse(str, true);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+      preserveOrder: true,
+    });
+    const parsedObject = parser.parse(xmlStr, true);
 
-export function parseXML(xml: string): IParsedXML | null {
-  if (!isValidXML(xml)) {
+    const builder = new XMLBuilder({
+      format: true,
+      ignoreAttributes: false,
+      preserveOrder: true,
+    });
+    const prettyXml: string = builder.build(parsedObject);
+
+    return {
+      type: "xml",
+      prettyXml,
+    };
+  } catch (e) {
     return null;
   }
-
-  const prettyXml = xmlFormatter(xml, {
-    indentation: "  ",
-    lineSeparator: "\n",
-  });
-
-  return {
-    type: "xml",
-    prettyXml,
-  };
 }
