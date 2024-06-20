@@ -14,6 +14,7 @@ import { ParserURLResult } from "./parser-url-result";
 import { ParserTextResult } from "./parser-text-result";
 import { ParserJWTResult } from "./parser-jwt-result";
 import { ParserJSONResult } from "./parser-json-result";
+import { ParserXMLResult } from "./parser-xml-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -45,7 +46,7 @@ export function ParserColumn(): JSX.Element {
         {type === "json" && (
           <ParserJSONResult json={parsedData as IParsedJSON} />
         )}
-        {type === "xml" && <pre>{(parsedData as IParsedXML).prettyXml}</pre>}
+        {type === "xml" && <ParserXMLResult xml={parsedData as IParsedXML} />}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
+import { xml } from "@codemirror/lang-xml";
 import { EditorView } from "@codemirror/view";
 import { CopyButton } from "@/components/copy-button";
 
@@ -12,6 +13,8 @@ const getLanguageExtension = (language: string) => {
   switch (language) {
     case "json":
       return json();
+    case "xml":
+      return xml();
     default:
       return json();
   }
