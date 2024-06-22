@@ -15,6 +15,17 @@ export function parseUserAgent(uaStr: string): IParsedUserAgent | null {
       browser += ` ${result.browser.version}`;
     }
 
+    let engine = "";
+    if (result.engine.name) {
+      engine = result.engine.name;
+      if (result.engine.version) {
+        engine += ` ${result.engine.version}`;
+      }
+    }
+    if (!engine.trim()) {
+      engine = "Unknown";
+    }
+
     let os = result.os.name;
     if (result.os.version) {
       os += ` ${result.os.version}`;
@@ -23,9 +34,9 @@ export function parseUserAgent(uaStr: string): IParsedUserAgent | null {
     let device = "";
     if (result.device.vendor) {
       device = result.device.vendor;
-    }
-    if (result.device.model) {
-      device += ` ${result.device.model}`;
+      if (result.device.model) {
+        device += ` ${result.device.model}`;
+      }
     }
     if (!device.trim()) {
       device = "Unknown";
@@ -37,6 +48,7 @@ export function parseUserAgent(uaStr: string): IParsedUserAgent | null {
     return {
       type: "useragent",
       browser,
+      engine,
       os,
       device,
     };

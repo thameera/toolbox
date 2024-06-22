@@ -40,6 +40,7 @@ export interface IParsedXML {
 export interface IParsedUserAgent {
   type: "useragent";
   browser: string;
+  engine: string;
   os: string;
   device: string;
 }

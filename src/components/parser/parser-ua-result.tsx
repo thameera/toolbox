@@ -26,6 +26,7 @@ export function ParserUserAgentResult({
       <Table>
         <TableBody>
           {renderRow("Browser", userAgent.browser)}
+          {renderRow("Engine", userAgent.engine)}
           {renderRow("OS", userAgent.os)}
           {renderRow("Device", userAgent.device)}
         </TableBody>
