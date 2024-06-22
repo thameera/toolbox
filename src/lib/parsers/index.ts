@@ -4,10 +4,17 @@ import { parseText } from "./text-parser";
 import { parseURL } from "./url-parser";
 import { parseJSON } from "./json-paser";
 import { parseXML } from "./xml-parser";
+import { parseUserAgent } from "./ua-parser";
 
 type TParserFn = (input: string) => TParsed | null;
 
-const parsers: TParserFn[] = [parseURL, parseJWT, parseJSON, parseXML];
+const parsers: TParserFn[] = [
+  parseUserAgent,
+  parseURL,
+  parseJWT,
+  parseJSON,
+  parseXML,
+];
 
 export const parse = (input: string): TParsed => {
   const trimmed = input.trim();

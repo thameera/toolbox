@@ -47,6 +47,7 @@ export function ParserColumn(): JSX.Element {
           <ParserJSONResult json={parsedData as IParsedJSON} />
         )}
         {type === "xml" && <ParserXMLResult xml={parsedData as IParsedXML} />}
+        {type === "useragent" && <div>UA: {JSON.stringify(parsedData)}</div>}
       </div>
     </div>
   );

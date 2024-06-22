@@ -1,4 +1,4 @@
-export type TParseTypes = "url" | "jwt" | "json" | "xml" | "text";
+export type TParseTypes = "url" | "jwt" | "json" | "xml" | "useragent" | "text";
 
 type JsonObject = { [key: string]: any };
 
@@ -37,6 +37,13 @@ export interface IParsedXML {
   prettyXml: string;
 }
 
+export interface IParsedUserAgent {
+  type: "useragent";
+  browser: string;
+  os: string;
+  device: string;
+}
+
 export interface IParsedNone {
   type: "";
 }
@@ -47,4 +54,5 @@ export type TParsed =
   | IParsedJWT
   | IParsedJSON
   | IParsedXML
+  | IParsedUserAgent
   | IParsedNone;
