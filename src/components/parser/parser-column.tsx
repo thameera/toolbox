@@ -5,6 +5,7 @@ import {
   IParsedJWT,
   IParsedText,
   IParsedURL,
+  IParsedUserAgent,
   IParsedXML,
   TParseTypes,
   TParsed,
@@ -15,6 +16,7 @@ import { ParserTextResult } from "./parser-text-result";
 import { ParserJWTResult } from "./parser-jwt-result";
 import { ParserJSONResult } from "./parser-json-result";
 import { ParserXMLResult } from "./parser-xml-result";
+import { ParserUserAgentResult } from "./parser-ua-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -47,7 +49,9 @@ export function ParserColumn(): JSX.Element {
           <ParserJSONResult json={parsedData as IParsedJSON} />
         )}
         {type === "xml" && <ParserXMLResult xml={parsedData as IParsedXML} />}
-        {type === "useragent" && <div>UA: {JSON.stringify(parsedData)}</div>}
+        {type === "useragent" && (
+          <ParserUserAgentResult userAgent={parsedData as IParsedUserAgent} />
+        )}
       </div>
     </div>
   );
