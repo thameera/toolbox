@@ -14,7 +14,9 @@ export function parseXML(xmlStr: string): IParsedXML | null {
       ignoreAttributes: false,
       preserveOrder: true,
     });
-    const prettyXml: string = builder.build(parsedObject);
+
+    // Trim is required since this adds a newline at the beginning
+    let prettyXml: string = builder.build(parsedObject).trim();
 
     return {
       type: "xml",
