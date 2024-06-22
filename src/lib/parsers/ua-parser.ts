@@ -5,10 +5,19 @@ export function parseUserAgent(uaStr: string): IParsedUserAgent | null {
   try {
     const parser = new UAParser(uaStr);
     const result = parser.getResult();
-    console.log(result);
 
     if (!result?.browser?.name || !result?.os?.name) {
       return null;
+    }
+
+    let browser = result.browser.name;
+    if (result.browser.version) {
+      browser += ` ${result.browser.version}`;
+    }
+
+    let os = result.os.name;
+    if (result.os.version) {
+      os += ` ${result.os.version}`;
     }
 
     let device = "";
@@ -27,9 +36,9 @@ export function parseUserAgent(uaStr: string): IParsedUserAgent | null {
 
     return {
       type: "useragent",
-      browser: `${result.browser.name} ${result.browser.version}`,
-      os: `${result.os.name} ${result.os.version}`,
-      device: device.trim(),
+      browser,
+      os,
+      device,
     };
   } catch (e) {
     return null;
