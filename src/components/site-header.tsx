@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
+import { ModeToggle } from "./mode-toggle";
 
 export function SiteHeader() {
   return (
@@ -10,6 +11,10 @@ export function SiteHeader() {
             <WrenchScrewdriverIcon className="w-6 h-6" />
             <span className="hidden font-bold sm:inline-block">Toolbox</span>
           </Link>
+        </div>
+
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <ModeToggle />
         </div>
       </div>
     </header>
