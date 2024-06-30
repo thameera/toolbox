@@ -21,7 +21,7 @@ export function ParserContainer(): JSX.Element {
 
   return (
     <div>
-      <div className="pl-4 pr-4 flex flex-row-reverse">
+      <div className="flex flex-row-reverse mb-2">
         <TooltipProvider delayDuration={200}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -41,11 +41,11 @@ export function ParserContainer(): JSX.Element {
       </div>
 
       <div className="flex flex-row">
-        <div className={twoColumns ? "w-1/2" : "w-full"}>
+        <div className={`pr-2 ${twoColumns ? "w-1/2" : "w-full"}`}>
           <ParserColumn />
         </div>
         <div
-          className={`transition-width duration-300 ${twoColumns ? "w-1/2" : "w-0 hidden"}`}
+          className={`transition-width duration-300 pl-2 ${twoColumns ? "w-1/2" : "w-0 hidden"}`}
         >
           <ParserColumn />
         </div>
