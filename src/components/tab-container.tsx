@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ParserContainer } from "./parser/parser-container";
 import { useState } from "react";
+import { DiffContainer } from "./diff/diff-container";
 
 export default function TabContainer(): JSX.Element {
   const [activeTab, setActiveTab] = useState("parser");
@@ -38,7 +39,7 @@ export default function TabContainer(): JSX.Element {
         forceMount
         className={activeTab === "diff" ? "" : "hidden"}
       >
-        TODO
+        <DiffContainer />
       </TabsContent>
       <TabsContent
         value="ref"
