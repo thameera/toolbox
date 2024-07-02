@@ -12,8 +12,8 @@ export function DiffContainer(): JSX.Element {
   const [newValue, setNewValue] = useState<TDiffInput>("");
   const [diffType, setDiffType] = useState<"text" | "json">("text");
 
-  const handleTextChange = (text: string) => {
-    const { type, oldValue, newValue } = getValuesToDiff(leftText, rightText);
+  const handleTextChange = (left: string, right: string) => {
+    const { type, oldValue, newValue } = getValuesToDiff(left, right);
     setDiffType(type);
     setOldValue(oldValue);
     setNewValue(newValue);
@@ -21,12 +21,12 @@ export function DiffContainer(): JSX.Element {
 
   const handleTextChangeLeft = (text: string) => {
     setLeftText(text);
-    handleTextChange(text);
+    handleTextChange(text, rightText);
   };
 
   const handleTextChangeRight = (text: string) => {
     setRightText(text);
-    handleTextChange(text);
+    handleTextChange(leftText, text);
   };
 
   return (
