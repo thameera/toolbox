@@ -31,10 +31,6 @@ export function ParserColumn(): JSX.Element {
     setParsedData(parsed);
   };
 
-  if (type === "xml") {
-    console.log(parsedData);
-  }
-
   return (
     <div>
       <ParserTextarea onChange={handleTextChange} />
