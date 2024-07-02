@@ -11,7 +11,8 @@ export const DiffView = ({
   oldValue,
   newValue,
 }: DiffViewProps): JSX.Element => {
-  const diffMethod = type === "json" ? DiffMethod.JSON : DiffMethod.CHARS;
+  const diffMethod =
+    type === "json" ? DiffMethod.JSON : DiffMethod.WORDS_WITH_SPACE;
 
   return (
     <ReactDiffViewer
