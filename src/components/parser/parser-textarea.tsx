@@ -16,13 +16,11 @@ export function ParserTextarea({
   };
 
   return (
-    <div>
-      <Textarea
-        placeholder="Paste something here"
-        rows={5}
-        onChange={handleChange}
-        onFocus={onFocus}
-      />
-    </div>
+    <Textarea
+      placeholder="Paste something here"
+      rows={5}
+      onChange={handleChange}
+      onFocus={onFocus}
+    />
   );
 }
