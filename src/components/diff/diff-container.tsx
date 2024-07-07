@@ -29,6 +29,16 @@ export function DiffContainer(): JSX.Element {
     handleTextChange(leftText, text);
   };
 
+  const renderTitle = (): JSX.Element => {
+    if (oldValue === "" && newValue === "") {
+      return <div />;
+    }
+    if (diffType === "json") {
+      return <div className="font-bold text-xl">JSON Diff</div>;
+    }
+    return <div className="font-bold text-xl">Text Diff</div>;
+  };
+
   return (
     <div>
       <div className="flex flex-row">
@@ -41,6 +51,7 @@ export function DiffContainer(): JSX.Element {
       </div>
 
       <div className="mt-4">
+        {renderTitle()}
         <DiffView type={diffType} oldValue={oldValue} newValue={newValue} />
       </div>
     </div>
