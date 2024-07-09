@@ -1,6 +1,7 @@
 import { parse } from "@/lib/parsers";
 import { ParserTextarea } from "./parser-textarea";
 import {
+  IParsedBase64JSON,
   IParsedJSON,
   IParsedJWT,
   IParsedText,
@@ -47,6 +48,9 @@ export function ParserColumn(): JSX.Element {
         {type === "xml" && <ParserXMLResult xml={parsedData as IParsedXML} />}
         {type === "useragent" && (
           <ParserUserAgentResult userAgent={parsedData as IParsedUserAgent} />
+        )}
+        {type === "base64json" && (
+          <div>{JSON.stringify(parsedData as IParsedBase64JSON)}</div>
         )}
       </div>
     </div>
