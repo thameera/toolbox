@@ -18,6 +18,7 @@ import { ParserJWTResult } from "./parser-jwt-result";
 import { ParserJSONResult } from "./parser-json-result";
 import { ParserXMLResult } from "./parser-xml-result";
 import { ParserUserAgentResult } from "./parser-ua-result";
+import { ParserBase64JSONResult } from "./parser-base64json-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -50,7 +51,7 @@ export function ParserColumn(): JSX.Element {
           <ParserUserAgentResult userAgent={parsedData as IParsedUserAgent} />
         )}
         {type === "base64json" && (
-          <div>{JSON.stringify(parsedData as IParsedBase64JSON)}</div>
+          <ParserBase64JSONResult json={parsedData as IParsedBase64JSON} />
         )}
       </div>
     </div>
