@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ParserContainer } from "./parser/parser-container";
 import { useState } from "react";
 import { DiffContainer } from "./diff/diff-container";
+import { ConvContainer } from "./converter/conv-container";
 
 export default function TabContainer(): JSX.Element {
   const [activeTab, setActiveTab] = useState("parser");
@@ -32,7 +33,7 @@ export default function TabContainer(): JSX.Element {
         forceMount
         className={activeTab === "converter" ? "" : "hidden"}
       >
-        TODO
+        <ConvContainer />
       </TabsContent>
       <TabsContent
         value="diff"
