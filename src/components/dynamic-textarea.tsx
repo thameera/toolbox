@@ -1,12 +1,14 @@
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 
-interface ParserTextareaProps {
+interface DynamicTextareaProps {
+  placeholder: string;
   onChange: (text: string) => void;
 }
 
-export function ParserTextarea({
+export function DynamicTextarea({
   onChange: onChangeCallback,
-}: ParserTextareaProps): JSX.Element {
+  placeholder,
+}: DynamicTextareaProps): JSX.Element {
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChangeCallback(event.target.value);
   };
@@ -17,7 +19,7 @@ export function ParserTextarea({
 
   return (
     <Textarea
-      placeholder="Paste something here"
+      placeholder={placeholder || ""}
       rows={5}
       onChange={handleChange}
       onFocus={onFocus}

@@ -1,7 +1,7 @@
 import { getValuesToDiff } from "@/lib/diff";
-import { DiffTextarea } from "./diff-textarea";
 import { DiffView } from "./diff-view";
 import { useState } from "react";
+import { DynamicTextarea } from "../dynamic-textarea";
 
 type TDiffInput = string | object;
 
@@ -43,10 +43,16 @@ export function DiffContainer(): JSX.Element {
     <div>
       <div className="flex flex-row">
         <div className="pr-2 w-1/2">
-          <DiffTextarea onChange={handleTextChangeLeft} />
+          <DynamicTextarea
+            placeholder="Paste text or JSON"
+            onChange={handleTextChangeLeft}
+          />
         </div>
         <div className="pl-2 w-1/2">
-          <DiffTextarea onChange={handleTextChangeRight} />
+          <DynamicTextarea
+            placeholder="Paste text or JSOn"
+            onChange={handleTextChangeRight}
+          />
         </div>
       </div>
 

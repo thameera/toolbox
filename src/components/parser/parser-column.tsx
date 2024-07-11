@@ -1,5 +1,4 @@
 import { parse } from "@/lib/parsers";
-import { ParserTextarea } from "./parser-textarea";
 import {
   IParsedBase64JSON,
   IParsedJSON,
@@ -19,6 +18,7 @@ import { ParserJSONResult } from "./parser-json-result";
 import { ParserXMLResult } from "./parser-xml-result";
 import { ParserUserAgentResult } from "./parser-ua-result";
 import { ParserBase64JSONResult } from "./parser-base64json-result";
+import { DynamicTextarea } from "../dynamic-textarea";
 
 type TParsedState = TParseTypes | "";
 
@@ -35,7 +35,10 @@ export function ParserColumn(): JSX.Element {
 
   return (
     <div>
-      <ParserTextarea onChange={handleTextChange} />
+      <DynamicTextarea
+        placeholder="Paste something here"
+        onChange={handleTextChange}
+      />
 
       <div className="mt-4">
         {type === "url" && <ParserURLResult url={parsedData as IParsedURL} />}
