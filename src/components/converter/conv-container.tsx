@@ -5,6 +5,7 @@ import { convertText } from "@/lib/converters";
 
 export function ConvContainer(): JSX.Element {
   const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
 
   const handleTextChange = (text: string) => {
     setInput(text);
@@ -12,8 +13,8 @@ export function ConvContainer(): JSX.Element {
 
   const convert = (taskId: string) => {
     console.log(taskId);
-    const output = convertText(input, taskId);
-    console.log(output);
+    const out = convertText(input, taskId);
+    setOutput(out);
   };
 
   return (
@@ -28,7 +29,7 @@ export function ConvContainer(): JSX.Element {
         </div>
         <div>
           <div>Output:</div>
-          <DynamicTextarea placeholder="output" onChange={handleTextChange} />
+          <DynamicTextarea value={output} readOnly={true} />
         </div>
       </div>
       <div className="pl-2 w-1/2">
