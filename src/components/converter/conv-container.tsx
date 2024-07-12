@@ -13,7 +13,7 @@ export function ConvContainer(): JSX.Element {
 
   const convert = (taskId: string) => {
     console.log(taskId);
-    const out = convertText(input, taskId);
+    const out = convertText(taskId, input);
     setOutput(out);
   };
 

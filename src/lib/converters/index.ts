@@ -1,8 +1,16 @@
 import * as basicEncodings from "./basicEncodings";
 
-export const convertText = (text: string, taskId: string): string => {
-  if (basicEncodings[taskId]) {
-    return basicEncodings[taskId](text);
+type ConverterFunction = (text: string) => string;
+
+const converters: Record<string, ConverterFunction> = {
+  ...basicEncodings,
+};
+
+export const convertText = (taskId: string, text: string): string => {
+  const converter = converters[taskId];
+  if (converter) {
+    return converter(text);
   }
+  console.error(`Converter not found for task: ${taskId}`);
   return "";
 };
