@@ -2,6 +2,7 @@ import { DynamicTextarea } from "../dynamic-textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { convertText } from "@/lib/converters";
+import { ConverterButtons } from "./conv-buttons";
 
 export function ConvContainer(): JSX.Element {
   const [input, setInput] = useState("");
@@ -33,7 +34,7 @@ export function ConvContainer(): JSX.Element {
         </div>
       </div>
       <div className="pl-2 w-1/2">
-        <Button onClick={() => convert("base64_encode")}>Base64 Encode</Button>
+        <ConverterButtons convertCallback={convert} />
       </div>
     </div>
   );
