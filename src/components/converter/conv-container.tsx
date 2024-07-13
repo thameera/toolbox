@@ -29,7 +29,7 @@ export function ConvContainer(): JSX.Element {
         </div>
         <div>
           <div>Output:</div>
-          <DynamicTextarea value={output} readOnly={true} />
+          <DynamicTextarea value={output} readOnly={true} copyable={true} />
         </div>
       </div>
       <div className="pl-2 w-1/2">
