@@ -15,8 +15,11 @@ export function ConverterButtons({
     <div className="flex items-center space-x-2">
       <div className="flex flex-col gap-2">
         <div className="font-semibold">Web Encodings</div>
-        <div>
+        <div className="flex gap-2">
           <ConvButton taskId="base64_encode" label="Base64 Encode" />
+          <ConvButton taskId="base64_decode" label="Base64 Decode" />
+          <ConvButton taskId="url_encode" label="URL Encode" />
+          <ConvButton taskId="url_decode" label="URL Decode" />
         </div>
       </div>
     </div>
