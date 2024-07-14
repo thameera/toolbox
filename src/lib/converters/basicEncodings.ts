@@ -1,3 +1,5 @@
+import * as he from "he";
+
 export const base64_encode = (text: string): string => {
   try {
     return btoa(text);
@@ -28,4 +30,12 @@ export const url_decode = (text: string): string => {
   } catch (e) {
     return "Invalid URL encoded string";
   }
+};
+
+export const html_encode = (text: string): string => {
+  return he.encode(text);
+};
+
+export const html_decode = (text: string): string => {
+  return he.decode(text);
 };

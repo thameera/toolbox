@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 interface ConverterButtonsProps {
   convertCallback: (taskId: string) => void;
@@ -20,6 +20,10 @@ export function ConverterButtons({
           <ConvButton taskId="base64_decode" label="Base64 Decode" />
           <ConvButton taskId="url_encode" label="URL Encode" />
           <ConvButton taskId="url_decode" label="URL Decode" />
+        </div>
+        <div className="flex gap-2">
+          <ConvButton taskId="html_encode" label="HTML Encode" />
+          <ConvButton taskId="html_decode" label="HTML Decode" />
         </div>
       </div>
     </div>
