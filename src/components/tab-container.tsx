@@ -5,6 +5,7 @@ import { ParserContainer } from "./parser/parser-container";
 import { useState } from "react";
 import { DiffContainer } from "./diff/diff-container";
 import { ConvContainer } from "./converter/conv-container";
+import { ReferenceContainer } from "./reference/reference-container";
 
 export default function TabContainer(): JSX.Element {
   const [activeTab, setActiveTab] = useState("parser");
@@ -47,7 +48,7 @@ export default function TabContainer(): JSX.Element {
         forceMount
         className={activeTab === "ref" ? "" : "hidden"}
       >
-        TODO
+        <ReferenceContainer />
       </TabsContent>
     </Tabs>
   );
