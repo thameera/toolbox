@@ -14,6 +14,8 @@ export function ConverterButtons({
   return (
     <div className="flex flex-col items-center space-x-2">
       <div className="flex flex-col gap-8">
+        {/* Start of button sets */}
+        {/* Web Encodings */}
         <div className="flex flex-col gap-2">
           <div className="font-semibold">Web Encodings</div>
           <div className="flex gap-2">
@@ -28,6 +30,7 @@ export function ConverterButtons({
           </div>
         </div>
 
+        {/* Time converters */}
         <div className="flex flex-col gap-2">
           <div className="font-semibold">Time Conversion</div>
           <div className="flex items-center gap-2">
@@ -35,7 +38,21 @@ export function ConverterButtons({
             <ConvButton taskId="format_date_from_unix_s" label="Unix seconds" />
             <ConvButton taskId="format_date_from_unix_ms" label="Unix millis" />
           </div>
+          <div className="flex items-center gap-2">
+            <span>Convert to</span>
+            <ConvButton
+              taskId="current_time_formatted_local"
+              label="Formatted"
+            />
+            <ConvButton
+              taskId="current_time_formatted_utc"
+              label="Formatted UTC"
+            />
+            <ConvButton taskId="current_time_unix_s" label="Unix seconds" />
+            <ConvButton taskId="current_time_unix_ms" label="Unix millis" />
+          </div>
         </div>
+        {/* End of button sets */}
       </div>
     </div>
   );
