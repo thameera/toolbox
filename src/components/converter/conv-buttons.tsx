@@ -30,9 +30,28 @@ export function ConverterButtons({
           </div>
         </div>
 
+        {/* Text converters */}
+        <div className="flex flex-col gap-2">
+          <div className="font-semibold">Text Converters</div>
+          <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+            <ConvButton taskId="text_uppercase" label="To Uppercase" />
+            <ConvButton taskId="text_lowercase" label="To Lowercase" />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+            <ConvButton
+              taskId="text_replace_n_with_newlines"
+              label="Replace \n with newlines"
+            />
+            <ConvButton
+              taskId="text_replace_newlines_with_n"
+              label="Replace newlines with \n"
+            />
+          </div>
+        </div>
+
         {/* Time converters */}
         <div className="flex flex-col gap-2">
-          <div className="font-semibold">Time Conversion</div>
+          <div className="font-semibold">Time Converters</div>
           <div className="flex flex-col sm:flex-row items-center gap-2 flex-wrap">
             <span className="sm:w-auto w-full text-center">Convert from</span>
             <ConvButton taskId="format_date_from_unix_s" label="Unix seconds" />
