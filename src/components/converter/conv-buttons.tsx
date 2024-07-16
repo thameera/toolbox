@@ -52,6 +52,16 @@ export function ConverterButtons({
             <ConvButton taskId="current_time_unix_ms" label="Unix millis" />
           </div>
         </div>
+
+        {/* Misc converters */}
+        <div className="flex flex-col gap-2">
+          <div className="font-semibold">Miscellaneous</div>
+          <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+            <ConvButton taskId="generate_uuid" label="UUID" />
+            <ConvButton taskId="coin_toss" label="Coin Toss" />
+            <ConvButton taskId="dice_roll" label="Dice Roll" />
+          </div>
+        </div>
         {/* End of button sets */}
       </div>
     </div>
