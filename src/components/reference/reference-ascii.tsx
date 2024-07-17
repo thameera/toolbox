@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default function AsciiTable(): JSX.Element {
+export default function ReferenceAsciiTable(): JSX.Element {
   return (
     <div>
       <Table className="sm:w-[600px]">

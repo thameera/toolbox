@@ -1,21 +1,21 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import AsciiTable from "./reference-ascii";
+import ReferenceAsciiTable from "./reference-ascii";
 import ReferenceHttpStatuses from "./reference-http-statuses";
 
 export function ReferenceContainer(): JSX.Element {
   return (
     <div>
-      <Tabs defaultValue="ascii">
+      <Tabs defaultValue="http">
         <TabsList>
-          <TabsTrigger value="ascii">ASCII Chart</TabsTrigger>
           <TabsTrigger value="http">HTTP Status Codes</TabsTrigger>
+          <TabsTrigger value="ascii">ASCII Chart</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="ascii">
-          <AsciiTable />
-        </TabsContent>
         <TabsContent value="http">
           <ReferenceHttpStatuses />
+        </TabsContent>
+        <TabsContent value="ascii">
+          <ReferenceAsciiTable />
         </TabsContent>
       </Tabs>
     </div>
