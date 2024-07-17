@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AsciiTable from "./reference-ascii";
+import ReferenceHttpStatuses from "./reference-http-statuses";
 
 export function ReferenceContainer(): JSX.Element {
   return (
@@ -14,7 +15,7 @@ export function ReferenceContainer(): JSX.Element {
           <AsciiTable />
         </TabsContent>
         <TabsContent value="http">
-          <div>TODO</div>
+          <ReferenceHttpStatuses />
         </TabsContent>
       </Tabs>
     </div>
