@@ -5,6 +5,7 @@ export type TParseTypes =
   | "xml"
   | "useragent"
   | "base64json"
+  | "x509cert"
   | "text";
 
 type JsonObject = { [key: string]: any };
@@ -57,6 +58,16 @@ export interface IParsedBase64JSON {
   json: JsonObject;
 }
 
+export interface IParsedX509Cert {
+  type: "x509cert";
+  subject: string;
+  issuer: string;
+  validFrom: string;
+  validTo: string;
+  pem: string;
+  publicKey: string;
+}
+
 export interface IParsedNone {
   type: "";
 }
@@ -69,4 +80,5 @@ export type TParsed =
   | IParsedXML
   | IParsedUserAgent
   | IParsedBase64JSON
+  | IParsedX509Cert
   | IParsedNone;

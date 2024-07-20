@@ -31,6 +31,7 @@ export function ParserColumn(): JSX.Element {
     console.log(parsed);
     setType(parsed.type);
     setParsedData(parsed);
+    console.log(parsedData);
   };
 
   return (
@@ -55,6 +56,9 @@ export function ParserColumn(): JSX.Element {
         )}
         {type === "base64json" && (
           <ParserBase64JSONResult json={parsedData as IParsedBase64JSON} />
+        )}
+        {type === "x509cert" && (
+          <div>{JSON.stringify(parsedData, null, 2)}</div>
         )}
       </div>
     </div>

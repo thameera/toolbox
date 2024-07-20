@@ -6,6 +6,7 @@ import { parseJSON } from "./json-paser";
 import { parseXML } from "./xml-parser";
 import { parseUserAgent } from "./ua-parser";
 import { parseBase64JSON } from "./base64json-parser";
+import { parseX509Cert } from "./x509";
 
 type TParserFn = (input: string) => TParsed | null;
 
@@ -16,6 +17,7 @@ const parsers: TParserFn[] = [
   parseJSON,
   parseXML,
   parseBase64JSON,
+  parseX509Cert,
 ];
 
 export const parse = (input: string): TParsed => {
