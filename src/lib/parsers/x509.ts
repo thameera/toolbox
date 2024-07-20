@@ -3,6 +3,11 @@ import { Buffer } from "buffer/index.js";
 import * as asn1js from "asn1js";
 import * as pkijs from "pkijs";
 
+const convertToPem = (key: string): string => {
+  const base64Key = key.match(/.{1,64}/g)?.join("\n") ?? "";
+  return `-----BEGIN PUBLIC KEY-----\n${base64Key}\n-----END PUBLIC KEY-----`;
+};
+
 export function parseX509Cert(str: string): IParsedX509Cert | null {
   try {
     const match = str.match(
@@ -35,7 +40,7 @@ export function parseX509Cert(str: string): IParsedX509Cert | null {
       validFrom,
       validTo,
       pem,
-      publicKey,
+      publicKey: convertToPem(publicKey),
     };
   } catch (e) {
     return null;
