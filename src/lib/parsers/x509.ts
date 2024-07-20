@@ -30,8 +30,7 @@ export function parseX509Cert(str: string): IParsedX509Cert | null {
       .join(", ");
     const validFrom = cert.notBefore.value.toLocaleString();
     const validTo = cert.notAfter.value.toLocaleString();
-    const publicKey =
-      cert.subjectPublicKeyInfo.parsedKey?.toString("base64") || "";
+    const publicKey = cert.subjectPublicKeyInfo.toString("base64");
 
     return {
       type: "x509cert",
