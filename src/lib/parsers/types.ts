@@ -6,6 +6,7 @@ export type TParseTypes =
   | "useragent"
   | "base64json"
   | "x509cert"
+  | "math-expr"
   | "text";
 
 type JsonObject = { [key: string]: any };
@@ -72,6 +73,11 @@ export interface IParsedX509Cert {
   publicKey: string;
 }
 
+export interface IParsedMathExpr {
+  type: "math-expr";
+  result: string;
+}
+
 export interface IParsedNone {
   type: "";
 }
@@ -85,4 +91,5 @@ export type TParsed =
   | IParsedUserAgent
   | IParsedBase64JSON
   | IParsedX509Cert
+  | IParsedMathExpr
   | IParsedNone;

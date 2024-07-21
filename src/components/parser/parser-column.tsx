@@ -62,6 +62,7 @@ export function ParserColumn(): JSX.Element {
         {type === "x509cert" && (
           <ParserCertResult cert={parsedData as IParsedX509Cert} />
         )}
+        {type === "math-expr" && <div>{JSON.stringify(parsedData)}</div>}
       </div>
     </div>
   );
