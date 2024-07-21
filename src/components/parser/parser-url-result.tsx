@@ -11,7 +11,7 @@ export function ParserURLResult({ url }: ParserURLResultProps): JSX.Element {
     return (
       <TableRow key={label}>
         <TableCell className="w-[150px] sm:w-[300px]">{label}</TableCell>
-        <TableCell>
+        <TableCell className="overflow-x-auto whitespace-nowrap">
           <CopyButton className="mr-2" text={value} /> {value}
         </TableCell>
       </TableRow>
