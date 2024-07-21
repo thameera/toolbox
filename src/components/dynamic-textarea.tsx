@@ -38,7 +38,10 @@ export function DynamicTextarea({
   };
 
   const onFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    event.target.select();
+    // Timeout ensures that the select() is called after any potential interfering events
+    setTimeout(() => {
+      event.target.select();
+    }, 0);
   };
 
   return (
