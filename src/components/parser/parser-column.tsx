@@ -3,6 +3,7 @@ import {
   IParsedBase64JSON,
   IParsedJSON,
   IParsedJWT,
+  IParsedMathExpr,
   IParsedText,
   IParsedURL,
   IParsedUserAgent,
@@ -21,6 +22,7 @@ import { ParserUserAgentResult } from "./parser-ua-result";
 import { ParserBase64JSONResult } from "./parser-base64json-result";
 import { DynamicTextarea } from "../dynamic-textarea";
 import { ParserCertResult } from "./parser-cert-result";
+import { ParserMathExprResult } from "./parser-mathexpr-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -62,7 +64,9 @@ export function ParserColumn(): JSX.Element {
         {type === "x509cert" && (
           <ParserCertResult cert={parsedData as IParsedX509Cert} />
         )}
-        {type === "math-expr" && <div>{JSON.stringify(parsedData)}</div>}
+        {type === "math-expr" && (
+          <ParserMathExprResult mathExpr={parsedData as IParsedMathExpr} />
+        )}
       </div>
     </div>
   );
