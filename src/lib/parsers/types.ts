@@ -64,6 +64,10 @@ export interface IParsedX509Cert {
   issuer: string;
   validFrom: string;
   validTo: string;
+  version: string;
+  serialNumber: string;
+  algorithm: string;
+  thumbprint: string;
   pem: string;
   publicKey: string;
 }

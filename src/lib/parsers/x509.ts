@@ -1,5 +1,5 @@
 import { IParsedX509Cert } from "./types";
-import { pki } from "node-forge";
+import { pki, md } from "node-forge";
 
 const createCNStr = (obj: any) =>
   obj.attributes
@@ -23,6 +23,13 @@ export function parseX509Cert(str: string): IParsedX509Cert | null {
     const validFrom = cert.validity.notBefore.toISOString();
     const validTo = cert.validity.notAfter.toISOString();
     const publicKey = pki.publicKeyToPem(cert.publicKey);
+    const version = `${cert.version + 1} (0x${cert.version.toString(16)})`;
+    const serialNumber = cert.serialNumber;
+    const algorithm = pki.oids[cert.signatureOid];
+    const thumbprint = pki.getPublicKeyFingerprint(cert.publicKey, {
+      encoding: "hex",
+      md: md.sha1.create(),
+    });
 
     return {
       type: "x509cert",
@@ -30,6 +37,10 @@ export function parseX509Cert(str: string): IParsedX509Cert | null {
       issuer,
       validFrom,
       validTo,
+      version,
+      serialNumber,
+      algorithm,
+      thumbprint,
       pem,
       publicKey,
     };
