@@ -1,3 +1,4 @@
+import { URL } from "whatwg-url";
 import { IParsedURL } from "./types";
 
 const parseHash = (hash: string): Record<string, string> => {
