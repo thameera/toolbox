@@ -6,6 +6,7 @@ import {
   IParsedText,
   IParsedURL,
   IParsedUserAgent,
+  IParsedX509Cert,
   IParsedXML,
   TParseTypes,
   TParsed,
@@ -19,6 +20,7 @@ import { ParserXMLResult } from "./parser-xml-result";
 import { ParserUserAgentResult } from "./parser-ua-result";
 import { ParserBase64JSONResult } from "./parser-base64json-result";
 import { DynamicTextarea } from "../dynamic-textarea";
+import { ParserCertResult } from "./parser-cert-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -58,7 +60,7 @@ export function ParserColumn(): JSX.Element {
           <ParserBase64JSONResult json={parsedData as IParsedBase64JSON} />
         )}
         {type === "x509cert" && (
-          <div>{JSON.stringify(parsedData, null, 2)}</div>
+          <ParserCertResult cert={parsedData as IParsedX509Cert} />
         )}
       </div>
     </div>
