@@ -6,7 +6,7 @@ import { parseJSON } from "./json-paser";
 import { parseXML } from "./xml-parser";
 import { parseUserAgent } from "./ua-parser";
 import { parseBase64JSON } from "./base64json-parser";
-import { parseX509Cert } from "./x509";
+import { parseX509Cert } from "./x509-parser";
 import { parseMathExpr } from "./math-expr-parser";
 
 type TParserFn = (input: string) => TParsed | null;
