@@ -8,6 +8,7 @@ interface DynamicTextareaProps {
   value?: string;
   readOnly?: boolean;
   copyable?: boolean;
+  isMonoSpace?: boolean;
 }
 
 export function DynamicTextarea({
@@ -16,6 +17,7 @@ export function DynamicTextarea({
   value: initialValue = "",
   readOnly,
   copyable,
+  isMonoSpace,
 }: DynamicTextareaProps): JSX.Element {
   const [value, setValue] = useState(initialValue);
 
@@ -53,6 +55,7 @@ export function DynamicTextarea({
         onChange={handleChange}
         onFocus={onFocus}
         readOnly={readOnly}
+        className={isMonoSpace ? "font-mono" : ""}
       />
     </div>
   );

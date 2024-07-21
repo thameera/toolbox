@@ -39,12 +39,14 @@ export function ParserCertResult({ cert }: ParserCertResultProps): JSX.Element {
         value={cert.pem.trim()}
         readOnly={true}
         copyable={true}
+        isMonoSpace={true}
       />
       <div className="font-bold mt-4">Public Key</div>
       <DynamicTextarea
         value={cert.publicKey.trim()}
         readOnly={true}
         copyable={true}
+        isMonoSpace={true}
       />
     </>
   );
