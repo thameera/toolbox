@@ -14,16 +14,18 @@ const getThumbprint = (cert: pki.Certificate): string => {
 
 export function parseX509Cert(str: string): IParsedX509Cert | null {
   try {
-    const match = str.match(
-      /-----BEGIN CERTIFICATE-----(.*)-----END CERTIFICATE-----/s,
-    );
-    if (!match) {
+    let cert;
+    if (str.startsWith("MI")) {
+      cert = pki.certificateFromAsn1(
+        forge.asn1.fromDer(forge.util.decode64(str)),
+      );
+    } else if (str.startsWith("-----BEGIN CERTIFICATE-----")) {
+      cert = pki.certificateFromPem(str);
+    } else {
       return null;
     }
 
-    const pem = str;
-    const cert = pki.certificateFromPem(pem);
-
+    const pem = pki.certificateToPem(cert);
     const subject = createCNStr(cert.subject);
     const issuer = createCNStr(cert.issuer);
     const validFrom = cert.validity.notBefore.toISOString();
