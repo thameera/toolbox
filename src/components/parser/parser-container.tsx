@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../ui/button";
-import { ParserColumn } from "./parser-column";
+import { ParserColumn, ParserColumnRef } from "./parser-column";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -11,9 +11,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { randomExample } from "@/lib/parsers/random-example";
 
 export function ParserContainer(): JSX.Element {
   const [twoColumns, setTwoColumns] = useState(true);
+
+  const parserColumnRef = useRef<ParserColumnRef>(null);
+
+  const showRandomExample = () => {
+    const example = randomExample();
+    parserColumnRef.current?.setTextInput(example);
+  };
 
   const toggleColumns = () => {
     setTwoColumns((prev) => !prev);
@@ -21,7 +29,12 @@ export function ParserContainer(): JSX.Element {
 
   return (
     <div>
-      <div className="flex flex-row-reverse mb-2">
+      <div className="flex justify-between mb-2">
+        <div className="flex">
+          <Button variant="outline" className="p-2" onClick={showRandomExample}>
+            Random example
+          </Button>
+        </div>
         <TooltipProvider delayDuration={200}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -42,7 +55,7 @@ export function ParserContainer(): JSX.Element {
 
       <div className="flex flex-row">
         <div className={`pr-2 ${twoColumns ? "w-1/2" : "w-full"}`}>
-          <ParserColumn />
+          <ParserColumn ref={parserColumnRef} />
         </div>
         <div
           className={`transition-width duration-300 pl-2 ${twoColumns ? "w-1/2" : "w-0 hidden"}`}
