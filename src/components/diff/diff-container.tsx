@@ -65,7 +65,7 @@ export function DiffContainer(): JSX.Element {
         </div>
         <div className="pl-2 w-1/2">
           <DynamicTextarea
-            placeholder="Paste text or JSOn"
+            placeholder="Paste text or JSON"
             value={rightText}
             onChange={handleTextChangeRight}
           />
