@@ -90,3 +90,5 @@ export const ParserColumn = forwardRef<ParserColumnRef>(
     );
   },
 );
+
+ParserColumn.displayName = "ParserColumn";
