@@ -2,6 +2,8 @@ import { getValuesToDiff } from "@/lib/diff";
 import { DiffView } from "./diff-view";
 import { useState } from "react";
 import { DynamicTextarea } from "../dynamic-textarea";
+import { Button } from "@/components/ui/button";
+import { randomDiffExample } from "@/lib/diff/random-example";
 
 type TDiffInput = string | object;
 
@@ -39,18 +41,32 @@ export function DiffContainer(): JSX.Element {
     return <div className="font-bold text-xl">Text Diff</div>;
   };
 
+  const showRandomExample = () => {
+    const example = randomDiffExample();
+    setLeftText(example.left);
+    setRightText(example.right);
+    handleTextChange(example.left, example.right);
+  };
+
   return (
     <div>
+      <div className="flex mb-2">
+        <Button variant="outline" className="p-2" onClick={showRandomExample}>
+          Random example
+        </Button>
+      </div>
       <div className="flex flex-row">
         <div className="pr-2 w-1/2">
           <DynamicTextarea
             placeholder="Paste text or JSON"
+            value={leftText}
             onChange={handleTextChangeLeft}
           />
         </div>
         <div className="pl-2 w-1/2">
           <DynamicTextarea
             placeholder="Paste text or JSOn"
+            value={rightText}
             onChange={handleTextChangeRight}
           />
         </div>
