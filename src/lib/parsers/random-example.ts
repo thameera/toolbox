@@ -25,7 +25,7 @@ const examples = [
 
 let lastIndex = -1;
 
-export const randomExample = () => {
+export const randomParserExample = () => {
   let index = lastIndex;
   while (index === lastIndex) {
     index = Math.floor(Math.random() * examples.length);

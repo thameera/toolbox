@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
-import { randomExample } from "@/lib/parsers/random-example";
+import { randomParserExample } from "@/lib/parsers/random-example";
 
 export function ParserContainer(): JSX.Element {
   const [twoColumns, setTwoColumns] = useState(true);
@@ -19,7 +19,7 @@ export function ParserContainer(): JSX.Element {
   const parserColumnRef = useRef<ParserColumnRef>(null);
 
   const showRandomExample = () => {
-    const example = randomExample();
+    const example = randomParserExample();
     parserColumnRef.current?.setTextInput(example);
   };
 
