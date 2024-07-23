@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
+import { FaGithub } from "react-icons/fa";
 import { ModeToggle } from "./mode-toggle";
 
 export function SiteHeader() {
@@ -13,7 +14,14 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div className="flex flex-1 items-center justify-between space-x-4 md:justify-end">
+          <a
+            href="https://github.com/thameera/toolbox"
+            target="_blank"
+            className="flex items-center space-x-2"
+          >
+            <FaGithub className="w-6 h-6" />
+          </a>
           <ModeToggle />
         </div>
       </div>
