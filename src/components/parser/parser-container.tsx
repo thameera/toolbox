@@ -1,10 +1,7 @@
 import { useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { ParserColumn, ParserColumnRef } from "./parser-column";
-import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-} from "@heroicons/react/24/outline";
+import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 import {
   Tooltip,
   TooltipContent,
@@ -40,9 +37,9 @@ export function ParserContainer(): JSX.Element {
             <TooltipTrigger asChild>
               <Button variant="outline" className="p-2" onClick={toggleColumns}>
                 {twoColumns ? (
-                  <ChevronDoubleRightIcon className="w-4 h-4" />
+                  <LuChevronsRight className="w-4 h-4" />
                 ) : (
-                  <ChevronDoubleLeftIcon className="w-4 h-4" />
+                  <LuChevronsLeft className="w-4 h-4" />
                 )}
               </Button>
             </TooltipTrigger>

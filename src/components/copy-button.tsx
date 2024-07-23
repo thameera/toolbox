@@ -5,10 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  ClipboardIcon,
-  ClipboardDocumentCheckIcon,
-} from "@heroicons/react/24/outline";
+import { LuClipboard, LuClipboardCheck } from "react-icons/lu";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -36,9 +33,9 @@ export function CopyButton({ text, className }: CopyButtonProps): JSX.Element {
             onClick={handleCopy}
           >
             {copied ? (
-              <ClipboardDocumentCheckIcon className="w-4 h-4" />
+              <LuClipboardCheck className="w-4 h-4" />
             ) : (
-              <ClipboardIcon className="w-4 h-4 opacity-50" />
+              <LuClipboard className="w-4 h-4 opacity-50" />
             )}
           </Button>
         </TooltipTrigger>
