@@ -50,15 +50,26 @@ export function ParserContainer(): JSX.Element {
             Random example
           </Button>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 items-center">
           {[1, 2, 3, 4].map((num) => (
-            <Toggle
-              key={num}
-              pressed={columnsVisibility[num - 1]}
-              onPressedChange={() => toggleColumn(num - 1)}
-            >
-              {num}
-            </Toggle>
+            <TooltipProvider delayDuration={200} key={num}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div>
+                    <Toggle
+                      pressed={columnsVisibility[num - 1]}
+                      onPressedChange={() => toggleColumn(num - 1)}
+                      disabled={num === 1}
+                    >
+                      {num}
+                    </Toggle>
+                  </div>
+                </TooltipTrigger>
+                {num === 1 ? null : (
+                  <TooltipContent>Toggle column {num}</TooltipContent>
+                )}
+              </Tooltip>
+            </TooltipProvider>
           ))}
         </div>
       </div>
@@ -70,17 +81,17 @@ export function ParserContainer(): JSX.Element {
           <ParserColumn ref={parserColumnRef} />
         </div>
         <div
-          className={`transition-width duration-300 px-2 ${columnsVisibility[1] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 px-2 ${columnsVisibility[1] ? columnWidthClass : "w-0 invisible"}`}
         >
           <ParserColumn />
         </div>
         <div
-          className={`transition-width duration-300 px-2 ${columnsVisibility[2] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 px-2 ${columnsVisibility[2] ? columnWidthClass : "w-0 invisible"}`}
         >
           <ParserColumn />
         </div>
         <div
-          className={`transition-width duration-300 pl-2 ${columnsVisibility[3] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 pl-2 ${columnsVisibility[3] ? columnWidthClass : "w-0 invisible"}`}
         >
           <ParserColumn />
         </div>
