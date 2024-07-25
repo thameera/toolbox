@@ -14,7 +14,7 @@ export function ParserNoneResult(): JSX.Element {
           <li>Math expressions</li>
         </ul>
         <div className="text-sm mt-4">
-          Click "Random Example" to see them in action!
+          Click &quot;Random Example&quot; to see them in action!
         </div>
       </div>
     </div>
