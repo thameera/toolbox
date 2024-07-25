@@ -24,6 +24,7 @@ import { ParserBase64JSONResult } from "./parser-base64json-result";
 import { DynamicTextarea } from "../dynamic-textarea";
 import { ParserCertResult } from "./parser-cert-result";
 import { ParserMathExprResult } from "./parser-mathexpr-result";
+import { ParserNoneResult } from "./parser-none-result";
 
 type TParsedState = TParseTypes | "";
 
@@ -85,6 +86,7 @@ export const ParserColumn = forwardRef<ParserColumnRef>(
           {type === "math-expr" && (
             <ParserMathExprResult mathExpr={parsedData as IParsedMathExpr} />
           )}
+          {type === "" && <ParserNoneResult />}
         </div>
       </div>
     );
