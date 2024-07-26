@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle";
 import { ParserColumn, ParserColumnRef } from "./parser-column";
 import {
@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip";
+} from "@/components/ui/tooltip";
 import { randomParserExample } from "@/lib/parsers/random-example";
 
 export function ParserContainer(): JSX.Element {
@@ -46,9 +46,22 @@ export function ParserContainer(): JSX.Element {
     <div>
       <div className="flex justify-between mb-2">
         <div className="flex">
-          <Button variant="outline" className="p-2" onClick={showRandomExample}>
-            Random example
-          </Button>
+          <TooltipProvider delayDuration={200}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="p-2"
+                  onClick={showRandomExample}
+                >
+                  Random example
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                Keep clicking to see random examples
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <div className="flex space-x-2 items-center">
           {[1, 2, 3, 4].map((num) => (

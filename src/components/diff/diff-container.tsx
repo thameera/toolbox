@@ -3,6 +3,12 @@ import { DiffView } from "./diff-view";
 import { useState } from "react";
 import { DynamicTextarea } from "../dynamic-textarea";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { randomDiffExample } from "@/lib/diff/random-example";
 
 type TDiffInput = string | object;
@@ -51,9 +57,22 @@ export function DiffContainer(): JSX.Element {
   return (
     <div>
       <div className="flex mb-2">
-        <Button variant="outline" className="p-2" onClick={showRandomExample}>
-          Random example
-        </Button>
+        <TooltipProvider delayDuration={200}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                className="p-2"
+                onClick={showRandomExample}
+              >
+                Random example
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Keep clicking to see random examples
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       <div className="flex flex-row">
         <div className="pr-2 w-1/2">
