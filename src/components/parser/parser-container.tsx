@@ -81,17 +81,17 @@ export function ParserContainer(): JSX.Element {
           <ParserColumn ref={parserColumnRef} />
         </div>
         <div
-          className={`transition-width duration-100 px-2 ${columnsVisibility[1] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 px-2 ${columnsVisibility[1] ? columnWidthClass : "w-0 px-0 invisible"}`}
         >
           <ParserColumn />
         </div>
         <div
-          className={`transition-width duration-100 px-2 ${columnsVisibility[2] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 px-2 ${columnsVisibility[2] ? columnWidthClass : "w-0 px-0 invisible"}`}
         >
           <ParserColumn />
         </div>
         <div
-          className={`transition-width duration-100 pl-2 ${columnsVisibility[3] ? columnWidthClass : "w-0 invisible"}`}
+          className={`transition-width duration-100 pl-2 ${columnsVisibility[3] ? columnWidthClass : "w-0 pl-0 invisible"}`}
         >
           <ParserColumn />
         </div>
