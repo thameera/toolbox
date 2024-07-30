@@ -2,10 +2,32 @@ import { IParsedJSON } from "@/lib/parsers/types";
 import CodeView from "../codeview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { CopyButton } from "@/components/copy-button";
 
 interface ParserJSONResultProps {
   json: IParsedJSON;
 }
+
+const renderRow = (label: string, value: any): JSX.Element => {
+  let displayValue: string;
+  if (typeof value === "object" || Array.isArray(value)) {
+    displayValue = JSON.stringify(value);
+  } else {
+    displayValue = String(value);
+  }
+
+  return (
+    <TableRow key={label}>
+      <TableCell className="w-[150px] sm:w-[300px] truncate max-w-[150px] sm:max-w-[300px]">
+        {label}
+      </TableCell>
+      <TableCell className="w-full">
+        <CopyButton className="mr-2 flex-shrink-0" text={displayValue} />
+        <span className="truncate">{displayValue}</span>
+      </TableCell>
+    </TableRow>
+  );
+};
 
 const TabbedJsonView = ({ json }: ParserJSONResultProps): JSX.Element => {
   return (
@@ -19,7 +41,15 @@ const TabbedJsonView = ({ json }: ParserJSONResultProps): JSX.Element => {
         <TabsContent value="json">
           <CodeView code={JSON.stringify(json.json, null, 2)} language="json" />
         </TabsContent>
-        <TabsContent value="table">table goes here</TabsContent>
+        <TabsContent value="table">
+          <Table>
+            <TableBody>
+              {Object.entries(json.json).map(([key, value]) =>
+                renderRow(key, value),
+              )}
+            </TableBody>
+          </Table>
+        </TabsContent>
       </Tabs>
     </>
   );
