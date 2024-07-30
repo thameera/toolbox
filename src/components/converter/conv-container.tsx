@@ -11,9 +11,19 @@ export function ConvContainer(): JSX.Element {
     setInput(text);
   };
 
-  const convert = (taskId: string) => {
+  const convert = (taskId: string, data?: Object) => {
     console.log(taskId);
-    const out = convertText(taskId, input);
+    let textToConvert = input;
+
+    /*
+     * If data is provided (used by some complex converters), we convert
+     * the input to a JSON string
+     */
+    if (data) {
+      textToConvert = JSON.stringify({ ...data, input });
+    }
+
+    const out = convertText(taskId, textToConvert);
     setOutput(out);
   };
 

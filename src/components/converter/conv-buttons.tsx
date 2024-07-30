@@ -1,12 +1,17 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 interface ConverterButtonsProps {
-  convertCallback: (taskId: string) => void;
+  convertCallback: (taskId: string, data?: Object) => void;
 }
 
 export function ConverterButtons({
   convertCallback,
 }: ConverterButtonsProps): JSX.Element {
+  const [replaceText, setReplaceText] = useState("");
+  const [replaceWith, setReplaceWith] = useState("");
+
   const ConvButton = ({ taskId, label }: { taskId: string; label: string }) => {
     return <Button onClick={() => convertCallback(taskId)}>{label}</Button>;
   };
@@ -46,6 +51,35 @@ export function ConverterButtons({
               taskId="text_replace_newlines_with_n"
               label="Replace newlines with \n"
             />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 flex-wrap sm:items-center">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto">
+              <Input
+                className="sm:w-auto"
+                placeholder="replace"
+                value={replaceText}
+                onChange={(e) => {
+                  setReplaceText(e.target.value);
+                }}
+              />
+              <Input
+                className="sm:w-auto"
+                placeholder="with"
+                value={replaceWith}
+                onChange={(e) => {
+                  setReplaceWith(e.target.value);
+                }}
+              />
+              <Button
+                className="sm:w-auto"
+                onClick={() => {
+                  const data = { replace: replaceText, with: replaceWith };
+                  convertCallback("text_replace", data);
+                }}
+              >
+                Replace
+              </Button>
+            </div>
           </div>
         </div>
 
