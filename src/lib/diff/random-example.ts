@@ -16,13 +16,25 @@ const examples = [
   },
 ];
 
-let lastIndex = -1;
+let shuffledExamples: { left: string; right: string }[] = [];
+let lastExampleLeft: string = "";
 
 export const randomDiffExample = () => {
-  let index = lastIndex;
-  while (index === lastIndex) {
-    index = Math.floor(Math.random() * examples.length);
+  // Shuffle the examples if we've seen them all (or on the first run)
+  if (shuffledExamples.length === 0) {
+    shuffledExamples = [...examples].sort(() => Math.random() - 0.5);
+
+    // Swap first and last example if it's the same as the last one
+    if (lastExampleLeft === shuffledExamples[0].left) {
+      const tmp = shuffledExamples[0];
+      shuffledExamples[0] = shuffledExamples[shuffledExamples.length - 1];
+      shuffledExamples[shuffledExamples.length - 1] = tmp;
+    }
   }
-  lastIndex = index;
-  return examples[index];
+
+  const example = shuffledExamples[0];
+  lastExampleLeft = example.left;
+  shuffledExamples = shuffledExamples.slice(1);
+
+  return example;
 };
