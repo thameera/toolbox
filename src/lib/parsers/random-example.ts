@@ -23,13 +23,25 @@ const examples = [
   "2*pi*5^2",
 ];
 
-let lastIndex = -1;
+let shuffledExamples: string[] = [];
+let lastExample: string = "";
 
 export const randomParserExample = () => {
-  let index = lastIndex;
-  while (index === lastIndex) {
-    index = Math.floor(Math.random() * examples.length);
+  // Shuffle the examples if we've seen them all (or on the first run)
+  if (shuffledExamples.length === 0) {
+    shuffledExamples = [...examples].sort(() => Math.random() - 0.5);
+
+    // Swap first and last example if it's the same as the last one
+    if (lastExample === shuffledExamples[0]) {
+      const tmp = shuffledExamples[0];
+      shuffledExamples[0] = shuffledExamples[shuffledExamples.length - 1];
+      shuffledExamples[shuffledExamples.length - 1] = tmp;
+    }
   }
-  lastIndex = index;
-  return examples[index];
+
+  const example = shuffledExamples[0];
+  lastExample = example;
+  shuffledExamples = shuffledExamples.slice(1);
+
+  return example;
 };
