@@ -1,7 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { ParserURLResult } from "./parser-url-result";
 import { IParsedURL } from "@/lib/parsers/types";
-import "@testing-library/jest-dom";
+
+// Mocking clipboard API
+Object.assign(navigator, {
+  clipboard: {
+    writeText: jest.fn().mockImplementation(() => Promise.resolve()),
+  },
+});
 
 const mockURL: IParsedURL = {
   type: "url",
@@ -64,5 +71,15 @@ describe("ParserURLResult", () => {
 
     expect(screen.queryByText("Query params")).not.toBeInTheDocument();
     expect(screen.queryByText("Hash params")).not.toBeInTheDocument();
+  });
+
+  it("renders the copy buttons correctly", async () => {
+    render(<ParserURLResult url={mockURL} />);
+
+    const copyButtons = screen.getAllByTestId("copy-button");
+    expect(copyButtons).toHaveLength(10);
+
+    await act(async () => fireEvent.click(copyButtons[0]));
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https:");
   });
 });

@@ -31,6 +31,8 @@ export function CopyButton({ text, className }: CopyButtonProps): JSX.Element {
             variant="outline"
             className={cn("p-2", className)}
             onClick={handleCopy}
+            aria-label="Copy"
+            data-testid="copy-button"
           >
             {copied ? (
               <LuClipboardCheck className="w-4 h-4" />
