@@ -98,7 +98,6 @@ describe("ParserJWTResult", () => {
   });
 
   // TODO
-  /*
   it("shows ISO timestamps in tooltips for timestamp claims in Table view", async () => {
     render(<ParserJWTResult jwt={mockJWT} />);
 
@@ -106,11 +105,15 @@ describe("ParserJWTResult", () => {
     await screen.findByTestId("table-view");
 
     const expElement = screen.getByText("1716239022");
-    userEvent.hover(expElement);
-    expect(await screen.findByText("2024-06-19T10:30:22.000Z")).toBeInTheDocument();
+    await userEvent.hover(expElement);
+    const expTooltip = await screen.findByRole("tooltip");
+    expect(expTooltip.textContent).toBe("2024-05-20T21:03:42.000Z");
+    await userEvent.unhover(expElement);
 
     const iatElement = screen.getByText("1516239022");
-    userEvent.hover(iatElement);
-    expect(await screen.findByText("2018-01-18T10:30:22.000Z")).toBeInTheDocument();
-  });*/
+    await userEvent.hover(iatElement);
+    const iatTooltip = await screen.findByRole("tooltip");
+    expect(iatTooltip.textContent).toBe("2018-01-18T01:30:22.000Z");
+    await userEvent.unhover(iatElement);
+  });
 });
