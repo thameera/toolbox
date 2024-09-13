@@ -20,7 +20,7 @@ const timestampToISO = (timestamp: number): string => {
 
 const JSONView = ({ jwt }: ParserJWTResultProps): JSX.Element => {
   return (
-    <div>
+    <div data-testid="json-view">
       <div className="font-bold mt-2">Header</div>
       <CodeView code={JSON.stringify(jwt.header, null, 2)} language="json" />
       <div className="font-bold mt-2">Payload</div>
@@ -72,7 +72,7 @@ const renderRow = (label: string, value: any): JSX.Element => {
 
 const TableView = ({ jwt }: ParserJWTResultProps): JSX.Element => {
   return (
-    <div>
+    <div data-testid="table-view">
       <div className="font-bold mt-2">Header</div>
       <Table>
         <TableBody>
