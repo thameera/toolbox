@@ -1,10 +1,4 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  act,
-  findByTestId,
-} from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { ParserJWTResult } from "./parser-jwt-result";
@@ -16,6 +10,12 @@ Object.assign(navigator, {
     writeText: jest.fn().mockImplementation(() => Promise.resolve()),
   },
 });
+
+// Mock CodeView
+jest.mock("../codeview", () => ({
+  __esModule: true,
+  default: ({ code }: { code: string }) => <pre>{code}</pre>,
+}));
 
 const mockJWT: IParsedJWT = {
   type: "jwt",
@@ -33,27 +33,28 @@ const mockJWT: IParsedJWT = {
 };
 
 describe("ParserJWTResult", () => {
-  it("renders JWT header and payload in JSON view", () => {
+  it("renders JWT header and payload in JSON view", async () => {
     render(<ParserJWTResult jwt={mockJWT} />);
 
-    fireEvent.click(screen.getByText("JSON"));
+    userEvent.click(screen.getByText("JSON"));
+    const jsonView = await screen.findByTestId("json-view");
 
-    // Check for individual keys and values
-    expect(screen.getByText('"alg"')).toBeInTheDocument();
-    expect(screen.getByText('"HS256"')).toBeInTheDocument();
-    expect(screen.getByText('"typ"')).toBeInTheDocument();
-    expect(screen.getByText('"JWT"')).toBeInTheDocument();
+    expect(jsonView).toBeInTheDocument();
 
-    expect(screen.getByText('"sub"')).toBeInTheDocument();
-    expect(screen.getByText('"1234567890"')).toBeInTheDocument();
-    expect(screen.getByText('"name"')).toBeInTheDocument();
-    expect(screen.getByText('"John Doe"')).toBeInTheDocument();
-    expect(screen.getByText('"admin"')).toBeInTheDocument();
-    expect(screen.getByText("true")).toBeInTheDocument();
-    expect(screen.getByText('"exp"')).toBeInTheDocument();
-    expect(screen.getByText("1716239022")).toBeInTheDocument();
-    expect(screen.getByText('"iat"')).toBeInTheDocument();
-    expect(screen.getByText("1516239022")).toBeInTheDocument();
+    const preElements = jsonView.querySelectorAll("pre");
+    expect(preElements).toHaveLength(2); // Header and Payload
+
+    const headerJson = preElements[0].textContent;
+    const payloadJson = preElements[1].textContent;
+
+    expect(headerJson).toContain('"alg": "HS256"');
+    expect(headerJson).toContain('"typ": "JWT"');
+
+    expect(payloadJson).toContain('"sub": "1234567890"');
+    expect(payloadJson).toContain('"name": "John Doe"');
+    expect(payloadJson).toContain('"admin": true');
+    expect(payloadJson).toContain('"exp": 1716239022');
+    expect(payloadJson).toContain('"iat": 1516239022');
   });
 
   it("renders JWT header and payload in Table view", async () => {
@@ -88,8 +89,6 @@ describe("ParserJWTResult", () => {
 
     userEvent.click(screen.getByText("Table"));
     await screen.findByTestId("table-view");
-
-    //screen.debug(undefined, Infinity);
 
     const copyButtons = screen.getAllByTestId("copy-button");
     expect(copyButtons).toHaveLength(7); // 5 payload + 2 header claims
