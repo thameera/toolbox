@@ -22,7 +22,7 @@ const mockXML: IParsedXML = {
 };
 
 describe("ParserXMLResult", () => {
-  it("renders the XML content correctly in JSON view", async () => {
+  it("renders the XML content correctly in code view", async () => {
     render(<ParserXMLResult xml={mockXML} />);
 
     expect(screen.getByText("XML")).toBeInTheDocument();

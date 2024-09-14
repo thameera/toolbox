@@ -31,7 +31,7 @@ const renderRow = (label: string, value: any): JSX.Element => {
 
 const TabbedJsonView = ({ json }: ParserJSONResultProps): JSX.Element => {
   return (
-    <>
+    <div data-testid="tabbed-view">
       <div className="font-bold text-xl mb-4">JSON Object</div>
       <Tabs defaultValue="json" className="mt-4">
         <TabsList>
@@ -42,7 +42,7 @@ const TabbedJsonView = ({ json }: ParserJSONResultProps): JSX.Element => {
           <CodeView code={JSON.stringify(json.json, null, 2)} language="json" />
         </TabsContent>
         <TabsContent value="table">
-          <Table>
+          <Table data-testid="table-view">
             <TableBody>
               {Object.entries(json.json).map(([key, value]) =>
                 renderRow(key, value),
@@ -51,7 +51,7 @@ const TabbedJsonView = ({ json }: ParserJSONResultProps): JSX.Element => {
           </Table>
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 };
 
@@ -69,9 +69,9 @@ export function ParserJSONResult({ json }: ParserJSONResultProps): JSX.Element {
   }
 
   return (
-    <>
+    <div data-testid="big-json-view">
       <div className="font-bold text-xl mb-4">{title}</div>
       <CodeView code={JSON.stringify(json.json, null, 2)} language="json" />
-    </>
+    </div>
   );
 }
