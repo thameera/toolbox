@@ -97,7 +97,6 @@ describe("ParserJWTResult", () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith("HS256");
   });
 
-  // TODO
   it("shows ISO timestamps in tooltips for timestamp claims in Table view", async () => {
     render(<ParserJWTResult jwt={mockJWT} />);
 
