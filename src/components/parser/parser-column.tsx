@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import { parse } from "@/lib/parsers";
 import {
   IParsedBase64JSON,
@@ -64,7 +64,7 @@ export const ParserColumn = forwardRef<ParserColumnRef>(
           onChange={handleTextChange}
         />
 
-        <div className="mt-4">
+        <div className="mt-4" data-testid="parsed-data-container">
           {type === "url" && <ParserURLResult url={parsedData as IParsedURL} />}
           {type === "text" && (
             <ParserTextResult result={parsedData as IParsedText} />
