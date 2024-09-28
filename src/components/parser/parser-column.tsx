@@ -40,7 +40,7 @@ export const ParserColumn = forwardRef<ParserColumnRef>(
 
     const handleTextChange = (text: string) => {
       const parsed: TParsed = parse(text);
-      console.log(parsed);
+      //console.log(parsed);
       setType(parsed.type);
       setParsedData(parsed);
     };

@@ -16,12 +16,29 @@ type SampleInput = {
   title: string;
   data: string;
 };
+
 const sampleInputs = [
+  // URL
   {
     type: "url",
     input: "https://example.com/path?foo=bar&baz=qux",
     title: "URL",
     data: "example.com",
+  },
+  // Text
+  {
+    type: "text",
+    input: "Hello, World!",
+    title: "Text",
+    data: "Words: 2",
+  },
+  // JWT
+  {
+    type: "jwt",
+    input:
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Buci5wYXduZWUuaW4uZ292LyIsInN1YiI6InJvbl9zd2Fuc29uIiwiZGVwdCI6IlBhcmtzICYgUmVjIiwicm9sZXMiOlsiZGlyZWN0b3IiXSwiaGF0ZXNHb3Z0Ijp0cnVlLCJpYXQiOjE3MjE2NTUzNjksImV4cCI6MTcyMTY3NTM2OSwiYXpwIjoicGFya3MtY2xpZW50Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSJ9.Jz7Xm0SWdmbRyTUwxa9Aa41azGRkSReb4MkfBtjeYp8",
+    title: "JWT",
+    data: "HS256",
   },
 ];
 
@@ -33,7 +50,8 @@ describe("ParserColumn", () => {
 
       // Input text
       const textInput = screen.getByRole("textbox");
-      userEvent.type(textInput, input);
+      await userEvent.click(textInput);
+      await userEvent.paste(input);
 
       // Wait for the input to be typed
       await waitFor(() => {
