@@ -1,3 +1,10 @@
+import { TextEncoder, TextDecoder } from "util";
+
+// The following two globals are required for whatwg-url to work in Jest
+// https://github.com/jsdom/whatwg-url/issues/209
+(global as any).TextEncoder = TextEncoder;
+(global as any).TextDecoder = TextDecoder;
+
 Range.prototype.getBoundingClientRect = () => ({
   bottom: 0,
   height: 0,

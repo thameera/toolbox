@@ -1,5 +1,4 @@
 const nextJest = require("next/jest");
-const { TextEncoder, TextDecoder } = require("util");
 
 /** @type {import('jest').Config} */
 const createJestConfig = nextJest({
@@ -13,12 +12,6 @@ const config = {
   testEnvironment: "jsdom",
   // Add more setup options before each test is run
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
-  // The following two globals are required for whatwg-url to work in Jest
-  // https://github.com/jsdom/whatwg-url/issues/209
-  globals: {
-    TextEncoder,
-    TextDecoder,
-  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
