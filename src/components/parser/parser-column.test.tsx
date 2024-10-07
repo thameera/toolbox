@@ -40,6 +40,59 @@ const sampleInputs = [
     title: "JWT",
     data: "HS256",
   },
+  // JSON
+  {
+    type: "json",
+    input: '{"foo": "bar"}',
+    title: "JSON Object",
+    data: '"foo": "bar"',
+  },
+  /* TODO test JSON Array */
+  // XML
+  {
+    type: "xml",
+    input:
+      '<?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don\'t forget me this weekend!</body></note>',
+    title: "XML",
+    data: "<to>Tove</to>",
+  },
+  // User-Agent
+  {
+    type: "ua",
+    input:
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    title: "User Agent",
+    data: "Chrome 126",
+  },
+  // Base64 json
+  {
+    type: "base64json",
+    input: "eyJyZXR1cm5UbyI6ICJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ==",
+    title: "Base64-encoded JSON",
+    data: '"returnTo": "http://localhost:3000"',
+  },
+  // X509 certs
+  {
+    type: "x509cert",
+    input:
+      "MIIC5DCCAcygAwIBAgIJGFvVaEzVIPcQMA0GCSqGSIb3DQEBBQUAMBkxFzAVBgNVBAMTDnRoYW0uYXV0aDAuY29tMB4XDTE2MDQyMTA2NTY0MFoXDTI5MTIyOTA2NTY0MFowGTEXMBUGA1UEAxMOdGhhbS5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDIa7050W/GB1HBDMb+O+Mivgh01GA2SN2yqmhozQC9ih7mCnEzEaRNolP2vmi4AAG4o2Vf1JK2kzyRPiDgC+dWT/RmLg0e0WHxQkHWlVyFDU73s//VIjhTxjZ1RpyKAlv2hVDN+tYimn81jlVNAsZI97zgUTna9I38vMQ+oatJWF48LlyYittQGXOK91K50YLXj5XW5K2N/Rke5GBXowlmJsSplbjyIrNN2AFWnNjGVyE/a6bf5eLiMeeGgOcr8f/oNH5xZs1K7Cqp2WeIv3uCLMKUo/DedD6SIq9SIrqT4Ls1Ijieacq8eD3kNAt7+k+6gNagezT5d0nYSKKn3jEZAgMBAAGjLzAtMAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFGbP8T3m3/Ox79wZgGg8h8lNJcE1MA0GCSqGSIb3DQEBBQUAA4IBAQAs0sVgota1I8yacZ9epWS4os+DEPIvja1poewaxD7sWHntRcbYh75zliQAfoPTxRWdUP746NLoBAiqWr93ccHt5zBrgxH1nRsr2nHxK1yyzKlgsMSzrcjS6+RNYcLYrGdO16NEftQUeJOOVE82/udxNYNhoxc5RpyzDrSc6FL5zhdgyhvIbO/Kk6I0ogTJVemLzdGw+PhBSwgKjHfHEKBWeOpi33HOrgcd5+jMmouK7gSPeg2TuzYE77tKO18pA9yUF0wxN926VKPrMWJU7G6UnQ7GG6P46jjfLU5x9DHzdKHV06e1HhncEEjDTllj8/qeZrbgCKN4R540lxJW9fcJ",
+    title: "X.509 Certificate",
+    data: "CN=tham.auth0.com",
+  },
+  // Math expression
+  {
+    type: "math-expr",
+    input: "42*84+2",
+    title: "Math expression",
+    data: "3530",
+  },
+  // None
+  {
+    type: "",
+    input: "",
+    title: "Supports these formats:",
+    data: "URLs",
+  },
 ];
 
 describe("ParserColumn", () => {
