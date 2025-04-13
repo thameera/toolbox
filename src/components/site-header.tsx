@@ -15,6 +15,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex flex-1 items-center justify-between space-x-4 md:justify-end">
+          <ModeToggle />
           <a
             href="https://github.com/thameera/toolbox"
             target="_blank"
@@ -22,7 +23,6 @@ export function SiteHeader() {
           >
             <FaGithub className="w-6 h-6" />
           </a>
-          <ModeToggle />
         </div>
       </div>
     </header>
