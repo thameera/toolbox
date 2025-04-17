@@ -12,11 +12,11 @@ import { parseMathExpr } from "./math-expr-parser";
 type TParserFn = (input: string) => TParsed | null;
 
 const parsers: TParserFn[] = [
-  parseUserAgent,
   parseURL,
   parseJWT,
   parseJSON,
   parseXML,
+  parseUserAgent,
   parseBase64JSON,
   parseX509Cert,
   parseMathExpr,
